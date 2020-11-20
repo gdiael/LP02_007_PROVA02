@@ -14,11 +14,16 @@
 //      52, 23, 67, 15, 31, 61, 91, 12, 28, 36, 60, 25, 30, 33, 48
 //		Para ser uma arvore AVL não completa, a arvore está com altura 5, e o nó 91, no nível 3, é um nó folha
 // 
+// DESCRIÇÃO DAS DEMAIS QUESTÕES ESTÃO NO ARQUIVO AVLTree
+//
 // a impressão da arvore segue o esquema
 //  valor ┬─> [direita ]
 //        └─> [esquerda]
 
 package avl;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 class PrintVisitor implements Visitor {
 	@Override
@@ -82,12 +87,47 @@ public class Main {
 		System.out.println("Q1 f - Tree6 - AVL? " + Boolean.toString(tree6.isAVL()) + " | Completa? " + Boolean.toString(tree6.isComplete()));
 		// Q4 teste simples
 		AVLTree tree7 = new AVLTree();
-		int[] vec7 = {45, 50, 55, 51, 52, 40, 35, 30, 31};
+		int[] vec7 = {45, 50, 55, 51, 52, 40, 35, 30, 34, 31};
         for(int i : vec7){
             tree7.addAVL(i);
         }
 		System.out.print(tree7.toTreeView());
 		System.out.println("Q4 - Tree7 - AVL? " + Boolean.toString(tree7.isAVL()));
+		// Q5 teste simples
+		BinarySearchTree tree8 = new BinarySearchTree();
+		int[] vec8 = {10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23};
+        for(int i : vec8){
+            tree8.add(i);
+        }
+		System.out.println("\n" + tree8.root.subTreeString(""));
+		System.out.println("Q5 - Tree8 - AVL? " + Boolean.toString(tree8.isAVL()));
+		AVLTree tree9 = AVLTree.convert(tree8);
+		System.out.print(tree9.toTreeView());
+		System.out.println("Q5 - Tree9 - AVL? " + Boolean.toString(tree9.isAVL()));
+
+		try {
+			BufferedReader input = new BufferedReader(new FileReader("q4.in"));
+			BufferedReader output = new BufferedReader(new FileReader("q4.out"));
+			String line = input.readLine();
+			while(line != null) {
+				String [] split = line.split(" ");
+				AVLTree tree = new AVLTree(); // substituir pela implementação da árvore AVL
+				for(String s : split) {
+					int value = Integer.parseInt(s);
+					tree.addAVL(value); // aqui foi substituído pelo método que foi implementado
+				}
+				String result = output.readLine();
+				if(!result.equals(tree.toString())) {
+					System.out.println(result + " != " + tree + "\n");
+				}
+				
+				line = input.readLine();
+			}
+			input.close();
+			output.close();
+		} catch (Exception e) {
+			System.out.println("Erro!\n" + e);
+		}
 
 	}
 }

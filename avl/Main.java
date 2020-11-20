@@ -80,6 +80,14 @@ public class Main {
         }
 		System.out.print(tree6.toTreeView());
 		System.out.println("Q1 f - Tree6 - AVL? " + Boolean.toString(tree6.isAVL()) + " | Completa? " + Boolean.toString(tree6.isComplete()));
+		// Q4 teste simples
+		AVLTree tree7 = new AVLTree();
+		int[] vec7 = {45, 50, 55, 51, 52, 40, 35, 30, 31};
+        for(int i : vec7){
+            tree7.addAVL(i);
+        }
+		System.out.print(tree7.toTreeView());
+		System.out.println("Q4 - Tree7 - AVL? " + Boolean.toString(tree7.isAVL()));
 
 	}
 }
